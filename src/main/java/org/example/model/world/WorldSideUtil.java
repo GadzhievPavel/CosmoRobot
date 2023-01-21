@@ -19,4 +19,8 @@ public class WorldSideUtil {
         }
         return side;
     }
+
+    static public int getWorldSide(WorldSide worldSide){
+        return worldSide.ordinal()+1;
+    }
 }

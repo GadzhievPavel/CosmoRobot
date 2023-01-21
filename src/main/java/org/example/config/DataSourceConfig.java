@@ -3,6 +3,7 @@ package org.example.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -16,7 +17,7 @@ import java.beans.PropertyVetoException;
 @PropertySource("classpath:application.properties")
 public class DataSourceConfig {
     @Resource
-    Environment environment;
+    public Environment environment;
     @Bean
     public DataSource dataSource()throws PropertyVetoException{
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
