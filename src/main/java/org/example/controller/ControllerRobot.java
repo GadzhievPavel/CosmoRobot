@@ -1,6 +1,13 @@
 package org.example.controller;
 
+import org.example.db.PositionRepo;
+import org.example.db.dao.PositionDAO;
+import org.example.entity.PositionEntity;
 import org.example.model.command.Command;
+import org.example.model.robot.Position;
+import org.example.model.world.WorldSide;
+import org.example.service.RobotService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.xml.ResourceEntityResolver;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +16,8 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/robot")
 public class ControllerRobot {
+    @Autowired
+    RobotService robotService;
     @GetMapping("/position")
     public ResponseEntity getPosition(){
         try {
@@ -37,11 +46,8 @@ public class ControllerRobot {
     }
     @PostMapping(path = "/command")
     public ResponseEntity moving(@RequestBody Command command){
-        try {
-            return ResponseEntity.ok().body("Command is "+command.getMoveRobot());
-        }catch (Exception e) {
-            return ResponseEntity.badRequest().body("не понял команду");
-        }
+            return ResponseEntity.ok().body(robotService.move(command));
+
 
     }
 }

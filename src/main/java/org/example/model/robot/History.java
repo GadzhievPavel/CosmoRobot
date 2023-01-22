@@ -19,8 +19,6 @@ public class History {
 
     private final short standardSize=10;
     private short maxSizeHistory;
-    @Autowired
-    private PositionDAO positionDAO;
     private final ArrayDeque<Position> positions;
 
 
@@ -46,8 +44,6 @@ public class History {
             //oldTempPosition = positions.pop();
             positions.addLast(clone);
         }
-        positionDAO.insert(position);
-
     }
 
     public short getMaxSizeHistory() {

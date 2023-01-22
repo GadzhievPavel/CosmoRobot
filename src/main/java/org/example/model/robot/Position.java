@@ -5,13 +5,17 @@ import org.example.db.dao.PositionDAO;
 import org.example.model.world.WorldSide;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.*;
+
 public class Position implements Cloneable {
-    private int id;
+
+    private Long id;
     private int x;
     private int y;
     private WorldSide worldSide;
 
     public Position(){
+        setId(0);
         setY(0);
         setX(0);
         setWorldSide(WorldSide.North);
@@ -66,11 +70,11 @@ public class Position implements Cloneable {
                 '}';
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 }
