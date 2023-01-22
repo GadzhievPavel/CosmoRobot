@@ -16,7 +16,7 @@ public class ControllerRobot {
     @GetMapping("/position")
     public ResponseEntity getPosition(){
         try {
-            return ResponseEntity.ok("моя позиция");
+            return ResponseEntity.ok(robotService.getPosition());
         }catch (Exception e){
             return ResponseEntity.badRequest().body("я потерялся");
         }
@@ -24,25 +24,22 @@ public class ControllerRobot {
 
     @GetMapping("/route")
     public ResponseEntity getRoute(){
-        try{
-            return ResponseEntity.ok("У самурая нет маршрута, только путь");
-        }catch (Exception e){
-            return ResponseEntity.badRequest().body("не могу найти маршрут");
-        }
+            return ResponseEntity.ok(robotService.getRoute());
+
     }
 
     @PostMapping("/reset")
     public ResponseEntity resetPosition(){
         try {
-            return ResponseEntity.ok("вернулся в исходную позицию");
+            return ResponseEntity.ok(robotService.resetPosition());
         }catch (Exception e){
-            return ResponseEntity.badRequest().body("не получилось вернуться");
+            return ResponseEntity.badRequest().body("робот не смог вернуться назад");
         }
     }
     @PostMapping(path = "/command")
     public ResponseEntity moving(@RequestBody Command command){
         try{
-            return ResponseEntity.ok().body(robotService.move(command));
+            return ResponseEntity.ok().body(Position.toModel(robotService.move(command)));
         }catch (Exception e){
             return ResponseEntity.badRequest().body("робот не смог переместиться");
         }

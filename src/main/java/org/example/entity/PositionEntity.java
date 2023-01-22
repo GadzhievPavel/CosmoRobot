@@ -1,8 +1,7 @@
 package org.example.entity;
 
 import org.example.model.robot.Position;
-import org.example.model.world.WorldSideUtil;
-import org.springframework.stereotype.Repository;
+import org.example.model.world.util.WorldSideUtil;
 
 import javax.persistence.*;
 

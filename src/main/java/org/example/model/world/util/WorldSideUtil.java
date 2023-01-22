@@ -1,4 +1,6 @@
-package org.example.model.world;
+package org.example.model.world.util;
+
+import org.example.model.world.WorldSide;
 
 public class WorldSideUtil {
     static public WorldSide getWorldSide(int i) {

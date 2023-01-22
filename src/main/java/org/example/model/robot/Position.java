@@ -1,6 +1,8 @@
 package org.example.model.robot;
 
+import org.example.entity.PositionEntity;
 import org.example.model.world.WorldSide;
+import org.example.model.world.util.WorldSideUtil;
 
 public class Position implements Cloneable {
     private int x;
@@ -16,6 +18,10 @@ public class Position implements Cloneable {
         setX(x);
         setY(y);
         setWorldSide(worldSide);
+    }
+
+    public static Position toModel(PositionEntity positionEntity){
+        return new Position(positionEntity.getX(), positionEntity.getY(), WorldSideUtil.getWorldSide(positionEntity.getWorldSide()));
     }
     public int getX() {
         return x;

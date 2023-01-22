@@ -66,4 +66,9 @@ public class Robot implements IMoveable {
     private void setHistory(History history) {
         this.history = history;
     }
+
+    public void reset(){
+        setPosition(new Position());
+        history.clear();
+    }
 }

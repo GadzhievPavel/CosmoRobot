@@ -51,6 +51,10 @@ public class History {
         return positions;
     }
 
+    public void clear(){
+        positions.clear();
+    }
+
     @Override
     public String toString() {
         return "History{" +
