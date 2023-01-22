@@ -1,4 +1,4 @@
-package org.example.model.robot.exception;
+package org.example.exception;
 
 public class HistoryPositionException extends RuntimeException{
     public HistoryPositionException(String message){

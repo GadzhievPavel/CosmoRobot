@@ -1,11 +1,13 @@
 package org.example.service;
 
-import org.example.db.PositionRepo;
+import org.example.entity.PositionRepo;
 import org.example.entity.PositionEntity;
 import org.example.model.command.Command;
 import org.example.model.robot.Robot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.PostConstruct;
 
 @Service
 public class RobotService {
@@ -16,7 +18,11 @@ public class RobotService {
     public RobotService (){
         robot = new Robot();
     }
-
+    @PostConstruct
+    public void saveRobotPosition(){
+        PositionEntity positionEntity = new PositionEntity(robot.getPosition());
+        repo.save(positionEntity);
+    }
     public PositionEntity move(Command command){
         switch (command.getMoveRobot()){
             case 'L':

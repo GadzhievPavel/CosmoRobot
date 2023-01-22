@@ -1,17 +1,8 @@
 package org.example.model.robot;
 
-import org.example.config.DataSourceConfig;
-import org.example.db.dao.PositionDAO;
-import org.example.db.exception.PositionTransactionException;
-import org.example.db.map.PositionMap;
-import org.example.model.robot.exception.HistoryPositionException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
+import org.example.exception.HistoryPositionException;
 import org.springframework.stereotype.Component;
 
-import javax.sql.DataSource;
 import java.util.ArrayDeque;
 
 @Component

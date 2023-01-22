@@ -1,21 +1,13 @@
 package org.example.model.robot;
 
-import javafx.geometry.Pos;
-import org.example.db.dao.PositionDAO;
 import org.example.model.world.WorldSide;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.persistence.*;
 
 public class Position implements Cloneable {
-
-    private Long id;
     private int x;
     private int y;
     private WorldSide worldSide;
 
     public Position(){
-        setId(0);
         setY(0);
         setX(0);
         setWorldSide(WorldSide.North);
@@ -25,14 +17,6 @@ public class Position implements Cloneable {
         setY(y);
         setWorldSide(worldSide);
     }
-
-    public Position(int id, int x, int y, WorldSide worldSide){
-        setId(id);
-        setX(x);
-        setY(y);
-        setWorldSide(worldSide);
-    }
-
     public int getX() {
         return x;
     }
@@ -68,13 +52,5 @@ public class Position implements Cloneable {
                 ", y=" + y +
                 ", worldSide=" + worldSide +
                 '}';
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 }

@@ -1,4 +1,4 @@
-package org.example.db;
+package org.example.entity;
 
 import org.example.entity.PositionEntity;
 import org.example.model.robot.Position;
