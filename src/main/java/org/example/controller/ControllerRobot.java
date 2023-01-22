@@ -1,25 +1,14 @@
-package org.example;
+package org.example.controller;
 
+import org.example.model.command.Command;
 import org.springframework.beans.factory.xml.ResourceEntityResolver;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/robot")
 public class ControllerRobot {
-    @GetMapping("/")
-    public ResponseEntity go(){
-        try{
-            return ResponseEntity.ok("Едем");
-        }catch(Exception e){
-            return ResponseEntity.badRequest().body("что-то сломалось");
-        }
-    }
-
     @GetMapping("/position")
     public ResponseEntity getPosition(){
         try {
@@ -46,13 +35,13 @@ public class ControllerRobot {
             return ResponseEntity.badRequest().body("не получилось вернуться");
         }
     }
+    @PostMapping(path = "/command")
+    public ResponseEntity moving(@RequestBody Command command){
+        try {
+            return ResponseEntity.ok().body("Command is "+command.getMoveRobot());
+        }catch (Exception e) {
+            return ResponseEntity.badRequest().body("не понял команду");
+        }
 
-//    @PostMapping(path = "/command",params = )
-//    public ResponseEntity moving(){
-//        try {
-//
-//        }catch (Exception e) {
-//        }
-//
-//    }
+    }
 }
