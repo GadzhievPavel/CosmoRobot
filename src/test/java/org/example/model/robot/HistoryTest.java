@@ -31,6 +31,9 @@ class HistoryTest {
                 new Position(0,3,WorldSide.North)));
 
         ArrayDeque<Position> standart = new ArrayDeque<>(Arrays.asList(
+                new Position(0,0, WorldSide.North),
+                new Position(0,1,WorldSide.North),
+                new Position(0,2,WorldSide.North),
                 new Position(0,3,WorldSide.North),
                 new Position(0,3,WorldSide.East),
                 new Position(0,0,WorldSide.North),
