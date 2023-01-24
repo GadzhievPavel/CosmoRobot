@@ -1,9 +1,10 @@
 package org.example.model.world;
 
 import org.example.entity.PositionEntity;
+import org.example.model.IMoveable;
 import org.example.model.world.util.WorldSideUtil;
 
-public class Position implements Cloneable {
+public class Position implements Cloneable, IMoveable {
     private Point point;
     private WorldSide worldSide;
 
@@ -23,7 +24,7 @@ public class Position implements Cloneable {
         return worldSide;
     }
 
-    public void setWorldSide(WorldSide worldSide) {
+    protected void setWorldSide(WorldSide worldSide) {
         this.worldSide = worldSide;
     }
 
@@ -36,7 +37,7 @@ public class Position implements Cloneable {
         return point;
     }
 
-    public void setPoint(Point point) {
+    protected void setPoint(Point point) {
         this.point = point;
     }
 
@@ -63,5 +64,33 @@ public class Position implements Cloneable {
         int result = point.hashCode();
         result = 31 * result + worldSide.hashCode();
         return result;
+    }
+
+    @Override
+    public void go() {
+        switch (this.getWorldSide()) {
+            case East:
+                this.getPoint().setX(this.getPoint().getX() + 1);
+                break;
+            case West:
+                this.getPoint().setX(this.getPoint().getX() - 1);
+                break;
+            case North:
+                this.getPoint().setY(this.getPoint().getY() + 1);
+                break;
+            case South:
+                this.getPoint().setY(this.getPoint().getY() - 1);
+                break;
+        }
+    }
+
+    @Override
+    public void rotateLeft() {
+        this.worldSide = worldSide.rotateLeft();
+    }
+
+    @Override
+    public void rotateRight() {
+        this.worldSide = worldSide.rotateRight();
     }
 }

@@ -52,7 +52,6 @@ public class RobotService {
     }
 
     public RouteRobot getRoute(){
-        
         return new RouteRobot(robot.getHistory().getPositions());
     }
 

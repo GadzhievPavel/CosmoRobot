@@ -27,31 +27,34 @@ public class Robot implements IMoveable {
     }
     @Override
     public void go() {
-        switch (getPosition().getWorldSide()) {
-            case East:
-                getPosition().getPoint().setX(getPosition().getPoint().getX() + 1);
-                break;
-            case West:
-                getPosition().getPoint().setX(getPosition().getPoint().getX() - 1);
-                break;
-            case North:
-                getPosition().getPoint().setY(getPosition().getPoint().getY() + 1);
-                break;
-            case South:
-                getPosition().getPoint().setY(getPosition().getPoint().getY() - 1);
-                break;
-        }
+        position.go();
+//        switch (getPosition().getWorldSide()) {
+//            case East:
+//                getPosition().getPoint().setX(getPosition().getPoint().getX() + 1);
+//                break;
+//            case West:
+//                getPosition().getPoint().setX(getPosition().getPoint().getX() - 1);
+//                break;
+//            case North:
+//                getPosition().getPoint().setY(getPosition().getPoint().getY() + 1);
+//                break;
+//            case South:
+//                getPosition().getPoint().setY(getPosition().getPoint().getY() - 1);
+//                break;
+//        }
         getHistory().addPosition(position);
     }
 
     @Override
     public void rotateLeft() {
-        getPosition().setWorldSide(getPosition().getWorldSide().rotateLeft());
+        //getPosition().setWorldSide(getPosition().getWorldSide().rotateLeft());
+        position.rotateLeft();
         getHistory().addPosition(position);
     }
     @Override
     public void rotateRight() {
-        getPosition().setWorldSide(getPosition().getWorldSide().rotateRight());
+        //getPosition().setWorldSide(getPosition().getWorldSide().rotateRight());
+        position.rotateRight();
         getHistory().addPosition(position);
     }
     @Override
