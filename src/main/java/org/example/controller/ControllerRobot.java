@@ -1,8 +1,7 @@
 package org.example.controller;
 
-import org.example.exception.RobotException;
 import org.example.model.command.Command;
-import org.example.model.robot.Position;
+import org.example.model.world.Position;
 import org.example.service.RobotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

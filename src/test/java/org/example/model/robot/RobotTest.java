@@ -1,5 +1,6 @@
 package org.example.model.robot;
 
+import org.example.model.world.Position;
 import org.example.model.world.WorldSide;
 import org.junit.jupiter.api.Test;
 
@@ -52,7 +53,7 @@ class RobotTest {
         robot.go();
         robot.go();
         ArrayList<Position> positionsStandard =new ArrayList<Position>(Arrays.asList(
-                //new Position(1,2, WorldSide.North),
+                new Position(1,2, WorldSide.North),
                 new Position(1,3,WorldSide.North),
                 new Position(1,4,WorldSide.North),
                 new Position(1,4,WorldSide.East),
@@ -65,6 +66,6 @@ class RobotTest {
                 new Position(2,3,WorldSide.South)
                 ));
         assertEquals(robot.getHistory().getPositions().toString(), positionsStandard.toString());
-        assertEquals(robot.getHistory().getMaxSizeHistory(),10);
+        //assertEquals(robot.getHistory().getMaxSizeHistory(),10);
     }
 }

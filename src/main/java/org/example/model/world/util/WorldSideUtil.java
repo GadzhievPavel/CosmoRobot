@@ -25,4 +25,14 @@ public class WorldSideUtil {
     static public int getWorldSide(WorldSide worldSide){
         return worldSide.ordinal()+1;
     }
+
+    static public double getAngleInDescartesSystem2D(WorldSide worldSide) throws Exception {
+        switch (worldSide){
+            case East:return 0;
+            case North:return Math.PI/2;
+            case West:return Math.PI;
+            case South:return 3*Math.PI/2;
+            default: throw new Exception();
+        }
+    }
 }

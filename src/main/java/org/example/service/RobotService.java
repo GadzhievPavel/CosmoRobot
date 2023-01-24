@@ -4,16 +4,12 @@ import org.example.entity.PositionRepo;
 import org.example.entity.PositionEntity;
 import org.example.model.command.Command;
 import org.example.model.response.RouteRobot;
-import org.example.model.robot.Position;
+import org.example.model.world.Position;
 import org.example.model.robot.Robot;
-import org.example.model.world.Vector;
-import org.example.model.world.util.VectorHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayDeque;
-import java.util.List;
 
 @Service
 public class RobotService {
@@ -56,6 +52,7 @@ public class RobotService {
     }
 
     public RouteRobot getRoute(){
+        
         return new RouteRobot(robot.getHistory().getPositions());
     }
 

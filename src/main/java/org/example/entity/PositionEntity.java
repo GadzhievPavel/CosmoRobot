@@ -1,6 +1,6 @@
 package org.example.entity;
 
-import org.example.model.robot.Position;
+import org.example.model.world.Position;
 import org.example.model.world.util.WorldSideUtil;
 
 import javax.persistence.*;
@@ -23,8 +23,8 @@ public class PositionEntity {
     }
 
     public PositionEntity(Position position){
-        setX(position.getX());
-        setY(position.getY());
+        setX(position.getPoint().getX());
+        setY(position.getPoint().getY());
         setWorldSide((short) WorldSideUtil.getWorldSide(position.getWorldSide()));
     }
 

@@ -1,6 +1,7 @@
 package org.example.model.robot;
 
 import org.example.model.IMoveable;
+import org.example.model.world.Position;
 
 public class Robot implements IMoveable {
     private Position position;
@@ -28,16 +29,16 @@ public class Robot implements IMoveable {
     public void go() {
         switch (getPosition().getWorldSide()) {
             case East:
-                getPosition().setX(getPosition().getX() + 1);
+                getPosition().getPoint().setX(getPosition().getPoint().getX() + 1);
                 break;
             case West:
-                getPosition().setX(getPosition().getX() - 1);
+                getPosition().getPoint().setX(getPosition().getPoint().getX() - 1);
                 break;
             case North:
-                getPosition().setY(getPosition().getY() + 1);
+                getPosition().getPoint().setY(getPosition().getPoint().getY() + 1);
                 break;
             case South:
-                getPosition().setY(getPosition().getY() - 1);
+                getPosition().getPoint().setY(getPosition().getPoint().getY() - 1);
                 break;
         }
         getHistory().addPosition(position);
@@ -70,5 +71,6 @@ public class Robot implements IMoveable {
     public void reset(){
         setPosition(new Position());
         history.clear();
+        getHistory().addPosition(getPosition());
     }
 }
