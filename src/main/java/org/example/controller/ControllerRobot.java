@@ -7,13 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
 @RestController
 @RequestMapping("/robot")
 public class ControllerRobot {
     @Autowired
     RobotService robotService;
+    private final int  delay = 11;
     @GetMapping("/position")
     public ResponseEntity getPosition(){
+        cosmoDelaySimulation();
         try {
             return ResponseEntity.ok(robotService.getPosition());
         }catch (Exception e){
@@ -29,6 +34,7 @@ public class ControllerRobot {
 
     @PostMapping("/reset")
     public ResponseEntity resetPosition(){
+        cosmoDelaySimulation();
         try {
             return ResponseEntity.ok(robotService.resetPosition());
         }catch (Exception e){
@@ -37,10 +43,20 @@ public class ControllerRobot {
     }
     @PostMapping(path = "/command")
     public ResponseEntity moving(@RequestBody Command command){
+        cosmoDelaySimulation();
         try{
             return ResponseEntity.ok().body(Position.toModel(robotService.move(command)));
         }catch (Exception e){
             return ResponseEntity.badRequest().body("робот не смог переместиться");
+        }
+    }
+
+    private void cosmoDelaySimulation(){
+        Random random = new Random();
+        try {
+            TimeUnit.SECONDS.sleep(random.nextInt(delay));
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }

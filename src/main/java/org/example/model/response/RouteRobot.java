@@ -2,8 +2,6 @@ package org.example.model.response;
 
 import org.example.model.robot.Robot;
 import org.example.model.world.Position;
-import org.example.model.world.Vector;
-import org.example.model.world.util.VectorHandler;
 
 import java.util.ArrayDeque;
 import java.util.Iterator;
@@ -38,8 +36,6 @@ public class RouteRobot {
         try {
             Position startPosition = (Position) positions.getFirst().clone();
             Robot robotTemp = new Robot((Position) startPosition.clone());
-            System.out.println("init func");
-            System.out.println(startPosition.toString() + robotTemp.getPosition().toString());
             for (int i = 0; i < iteration; i++) {
                 Iterator<Position> iterator = positions.iterator();
                 Position prevPosition = iterator.next();
@@ -53,9 +49,7 @@ public class RouteRobot {
                         robotTemp.go();
                     }
                     prevPosition = curPosition;
-                    System.out.println("Robot " + robotTemp.getPosition().toString());
                 }
-                System.out.println("end");
                 if (startPosition.equals(robotTemp.getPosition())) {
                     return true;
                 }
@@ -98,15 +92,9 @@ public class RouteRobot {
 //    }
 
     private boolean isLeftRotate(Position prev, Position cur){
-        if(prev.getWorldSide().rotateLeft() == cur.getWorldSide()){
-            return true;
-        }
-        return false;
+        return prev.getWorldSide().rotateLeft() == cur.getWorldSide();
     }
     private boolean isRightRotate(Position prev, Position cur){
-        if(prev.getWorldSide().rotateRight() == cur.getWorldSide()){
-            return true;
-        }
-        return false;
+        return prev.getWorldSide().rotateRight() == cur.getWorldSide();
     }
 }

@@ -1,7 +1,6 @@
 package org.example.model.response;
 
 import org.example.model.robot.Robot;
-import org.example.model.world.Position;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,13 +16,32 @@ class RouteRobotTest {
 
         RouteRobot routeRobot = new RouteRobot(robot.getHistory().getPositions());
 
-        assertEquals(routeRobot.isCircle(),true);
+        assertTrue(routeRobot.isCircle());
 
         robot.go();
         robot.rotateRight();
         robot.go();
 
-        assertEquals(routeRobot.isCircle(),false);
+        assertFalse(routeRobot.isCircle());
+
+        robot.reset();
+        robot.go();
+        robot.go();
+        RouteRobot routeRobot1 = new RouteRobot(robot.getHistory().getPositions());
+
+        assertFalse(routeRobot1.isCircle());
+
+        robot.reset();
+        robot.go();
+        robot.go();
+        robot.rotateLeft();
+        robot.rotateLeft();
+        robot.go();
+        robot.go();
+
+        RouteRobot routeRobot2 = new RouteRobot(robot.getHistory().getPositions());
+        assertTrue(routeRobot2.isCircle());
+
 
     }
 }

@@ -19,22 +19,6 @@ public class Position implements Cloneable {
     public static Position toModel(PositionEntity positionEntity){
         return new Position(positionEntity.getX(), positionEntity.getY(), WorldSideUtil.getWorldSide(positionEntity.getWorldSide()));
     }
-//    public int getX() {
-//        return x;
-//    }
-//
-//    protected void setX(int x) {
-//        this.x = x;
-//    }
-//
-//    public int getY() {
-//        return y;
-//    }
-//
-//    public void setY(int y) {
-//        this.y = y;
-//    }
-
     public WorldSide getWorldSide() {
         return worldSide;
     }
